@@ -1,0 +1,17 @@
+[32mINFO    [0m root:conftest.py:15 ======== 开始测试：初始化浏览器 ========
+[32mINFO    [0m WDM:logger.py:11 ====== WebDriver manager ======
+[32mINFO    [0m WDM:logger.py:11 Get LATEST chromedriver version for google-chrome
+[32mINFO    [0m WDM:logger.py:11 Get LATEST chromedriver version for google-chrome
+[32mINFO    [0m WDM:logger.py:11 Driver [C:\Users\chaxi\.wdm\drivers\chromedriver\win64\146.0.7680.165\chromedriver-win32/chromedriver.exe] found in cache
+[32mINFO    [0m root:conftest.py:30 浏览器启动成功
+[32mINFO    [0m root:test_ui_login.py:21 开始执行测试场景: 用户名为空场景
+[32mINFO    [0m root:login_page.py:19 访问登录页面: http://sahitest.com/demo/training/login.htm
+[32mINFO    [0m root:login_page.py:23 执行登录操作: 用户名=
+[32mINFO    [0m root:base_page.py:16 正在定位元素: ('name', 'user')
+[32mINFO    [0m root:base_page.py:35 向元素 ('name', 'user') 输入文本: 
+[32mINFO    [0m root:base_page.py:16 正在定位元素: ('name', 'password')
+[32mINFO    [0m root:base_page.py:35 向元素 ('name', 'password') 输入文本: secret
+[32mINFO    [0m root:base_page.py:16 正在定位元素: ('xpath', "//input[@type='submit']")
+[32mINFO    [0m root:base_page.py:29 点击元素: ('xpath', "//input[@type='submit']")
+[32mINFO    [0m root:test_ui_login.py:32 当前 URL: https://sahitest.com/demo/training/login.htm, 预期包含: login.htm
+[32mINFO    [0m root:conftest.py:32 测试结束：关闭浏览器

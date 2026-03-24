@@ -1,26 +1,34 @@
 import pytest
+import allure
 from pages.login_page import LoginPage
+from utils.file_utils import read_json
 from utils.log_utils import log
 
+# 读取测试数据
+login_data = read_json("data/login_data.json")
 
+
+@allure.feature("登录模块")
 class TestLoginUI:
-    def test_login_success(self, driver):
-        """测试登录成功场景"""
-        login_page = LoginPage(driver)
-        login_page.load()
-        login_page.login("test", "secret")
-        # 验证：登录成功后会跳转到 books 页面
-        log.info("验证是否跳转到购物页")
-        assert "books.htm" in driver.current_url, "登录失败，未跳转到预期页面"
-        log.info("测试通过：登录成功并正确跳转")
-
-    def test_login_fail(self, driver):
-        """测试登录失败场景"""
-        login_page = LoginPage(driver)
-        login_page.load()
-        login_page.login("test", "wrong_password")
-        # 验证：登录失败应停留在登录页，或 URL 不变
-        log.info("验证是否停留在登录页")
-        assert "login.htm" in driver.current_url or "books.htm" not in driver.current_url
-        # 也可以验证页面上是否有错误提示文本（如果有显示的话）
-        # 这里简单以 URL 未跳转作为验证标准
+    @allure.story("用户登录")
+    @allure.severity(allure.severity_level.NORMAL)
+    # 使用参数化，ids 用于在报告中显示测试用例名称
+    @pytest.mark.parametrize("data", login_data, ids=[d['desc'] for d in login_data])
+    def test_login_flow(self, driver, data):
+        """
+        参数化登录测试
+        """
+        log.info(f"开始执行测试场景: {data['desc']}")
+        # 步骤1：打开页面
+        with allure.step(f"打开登录页面"):
+            login_page = LoginPage(driver)
+            login_page.load()
+        # 步骤2：输入用户名密码并点击登录
+        with allure.step(f"输入用户名: {data['username']}, 密码: {data['password']}"):
+            login_page.login(data['username'], data['password'])
+        # 步骤3：验证结果
+        with allure.step("验证登录结果"):
+            current_url = driver.current_url
+            log.info(f"当前 URL: {current_url}, 预期包含: {data['expected_url']}")
+            assert data['expected_url'] in current_url, \
+                f"断言失败: 预期 URL 包含 {data['expected_url']}, 实际为 {current_url}"

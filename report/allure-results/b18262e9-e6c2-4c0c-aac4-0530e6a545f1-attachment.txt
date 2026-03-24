@@ -1,0 +1,17 @@
+2026-03-24 14:13:55,635 - INFO - [conftest.py:15] - ======== 开始测试：初始化浏览器 ========
+2026-03-24 14:13:55,635 - INFO - [logger.py:11] - ====== WebDriver manager ======
+2026-03-24 14:13:57,207 - INFO - [logger.py:11] - Get LATEST chromedriver version for google-chrome
+2026-03-24 14:13:57,687 - INFO - [logger.py:11] - Get LATEST chromedriver version for google-chrome
+2026-03-24 14:13:58,170 - INFO - [logger.py:11] - Driver [C:\Users\chaxi\.wdm\drivers\chromedriver\win64\146.0.7680.165\chromedriver-win32/chromedriver.exe] found in cache
+2026-03-24 14:13:59,685 - INFO - [conftest.py:30] - 浏览器启动成功
+2026-03-24 14:13:59,685 - INFO - [test_ui_login.py:21] - 开始执行测试场景: 登录成功场景
+2026-03-24 14:13:59,685 - INFO - [login_page.py:19] - 访问登录页面: http://sahitest.com/demo/training/login.htm
+2026-03-24 14:14:01,534 - INFO - [login_page.py:23] - 执行登录操作: 用户名=test
+2026-03-24 14:14:01,534 - INFO - [base_page.py:16] - 正在定位元素: ('name', 'user')
+2026-03-24 14:14:01,606 - INFO - [base_page.py:35] - 向元素 ('name', 'user') 输入文本: test
+2026-03-24 14:14:01,763 - INFO - [base_page.py:16] - 正在定位元素: ('name', 'password')
+2026-03-24 14:14:01,788 - INFO - [base_page.py:35] - 向元素 ('name', 'password') 输入文本: secret
+2026-03-24 14:14:01,872 - INFO - [base_page.py:16] - 正在定位元素: ('xpath', "//input[@type='submit']")
+2026-03-24 14:14:01,897 - INFO - [base_page.py:29] - 点击元素: ('xpath', "//input[@type='submit']")
+2026-03-24 14:14:02,554 - INFO - [test_ui_login.py:32] - 当前 URL: https://sahitest.com/demo/training/books.htm, 预期包含: books.htm
+2026-03-24 14:14:02,559 - INFO - [conftest.py:32] - 测试结束：关闭浏览器
