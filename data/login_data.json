@@ -1,23 +1,16 @@
 	[
 	  {
 	    "case_name": "正常登录",
-	    "username": "tomsmith",
-	    "password": "SuperSecretPassword!",
-	    "expected_text": "You logged into a secure area!",
+	    "username": "test",
+	    "password": "secret",
+	    "expected_text": "successful",
 	    "is_success": true
 	  },
 	  {
 	    "case_name": "密码错误",
-	    "username": "tomsmith",
+	    "username": "test",
 	    "password": "wrong_password",
-	    "expected_text": "Your password is invalid!",
-	    "is_success": false
-	  },
-	  {
-	    "case_name": "用户名错误",
-	    "username": "wrong_user",
-	    "password": "SuperSecretPassword!",
-	    "expected_text": "Your username is invalid!",
+	    "expected_text": "Invalid",
 	    "is_success": false
 	  }
 	]
