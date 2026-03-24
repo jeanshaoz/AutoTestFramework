@@ -3,12 +3,13 @@ from pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
-    # 1. 定义元素定位器
+    # 1. 定义元素定位器 (国外网站)
     USERNAME_INPUT = (By.ID, "username")
     PASSWORD_INPUT = (By.ID, "password")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "button[type='submit']")
-    SUCCESS_MSG = (By.CSS_SELECTOR, ".flash.success")
-    # 2. 定义页面 URL
+    # 国外网站的成功和失败提示都在 .flash 这个 class 下
+    ALERT_MSG = (By.CSS_SELECTOR, ".flash")
+    # 2. 页面 URL
     URL = "https://the-internet.herokuapp.com/login"
 
     def __init__(self, driver):
@@ -24,6 +25,13 @@ class LoginPage(BasePage):
         self.send_keys(self.PASSWORD_INPUT, password)
         self.click(self.LOGIN_BUTTON)
 
-    def get_success_message(self):
-        """获取登录成功后的提示信息"""
-        return self.find_element(self.SUCCESS_MSG).text
+    # 【改造】通用获取提示信息方法
+    def get_alert_message(self):
+        """
+        获取页面顶部的提示信息（包含成功和失败）
+        使用 .text 获取文本，会自动去掉末尾的 "×" 符号
+        """
+        # 这里的 find_element 继承自 BasePage，自带显式等待
+        element = self.find_element(self.ALERT_MSG)
+        # 获取文本并去除首尾空格
+        return element.text.strip()
